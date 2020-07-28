@@ -8,7 +8,7 @@
 bool checkVitalsOk(float val, int minLimit, int maxLimit)
 {
  bool bRet = true;
-  if((val < minLimit || (val > maxLimit))
+  if((val < minLimit) || (val > maxLimit))
   {
     bRet = false;
   }
