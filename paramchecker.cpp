@@ -1,21 +1,21 @@
-bool isBpmOK(float bpm) {  
-  if(bpm < 70 || bpm > 150) {
-    return false;
-  } 
-  return true;
-}
-bool isSpoOK(float spo2) {  
-  if(spo2 < 80) {
-    return false;
+#define BP_HIGH (150)
+#define BP_LOW (70)
+#define SP_HIGH (101)
+#define SP_LOW (80)
+#define RES_HIGH (60)
+#define RES_LOW (30)
+
+bool checkVitalsOk(float val, int minLimit, int maxLimit)
+{
+ bool bRet = true;
+  if((val < minLimit || (val > maxLimit))
+  {
+    bRet = false;
   }
-  return true;
+     return bRet;
 }
-bool isRespRateOK(float respRate) {  
-  if(respRate < 30 || respRate > 60) {
-    return false;
-  }
-  return true;
-}
+
 bool vitalsAreOk(float bpm, float spo2, float respRate) {
-  return isBpmOK(bpm) &&  isSpoOK(spo2) && isRespRateOK(respRate);
+  return (checkVitalsOk(bpm, BP_LOW, BP_HIGH) &&  checkVitalsOk(spo2, SP_LOW, SP_HIGH)
+    && checkVitalsOk(respRate, RES_LOW, RES_HIGH));
 }
